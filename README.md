@@ -17,8 +17,12 @@ This cache can be used in various scenarios where caching is required, such as i
 
 git-clone this repository and import the cache class into your project.
 
+```bash # Path: terminal
+git clone https://github.com/llorrac1/python-ttl-cache.git
+```
+
 ```python # Path: README.md
-from ttl_cache import Cache
+from cache import ttl_cache
 ```
 
 
