@@ -18,7 +18,21 @@ def ttl_cache(maxsize=128, ttl=600) -> Callable:
     Decorator that caches a function's return value each time it is called.
     If called later with the same arguments, the cached value is returned,
     and not re-evaluated.
+    '''
 
+    cache = TTLCache(maxsize=maxsize, ttl=ttl)
+
+    def decorator(func: Callable):
+        return cache(func)
+
+    decorator.clear = cache.clear
+    decorator.get_cache_info = cache.get_cache_info
+    return decorator
+
+class TTLCache:
+    '''
+    A cache that stores the return value of a function for a given time period.
+    
     If maxsize is set, the cache will store a maximum of that many items before
     deleting the last item added to the cache.
     
@@ -32,16 +46,6 @@ def ttl_cache(maxsize=128, ttl=600) -> Callable:
     maxsize=128 and ttl=600.
     '''
 
-    cache = TTLCache(maxsize=maxsize, ttl=ttl)
-
-    def decorator(func: Callable):
-        return cache(func)
-
-    decorator.clear = cache.clear
-    decorator.get_cache_info = cache.get_cache_info
-    return decorator
-
-class TTLCache:
     def __init__(self, maxsize=128, ttl=600):
         self.maxsize = maxsize
         self.ttl = ttl

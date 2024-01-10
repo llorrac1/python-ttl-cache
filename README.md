@@ -21,15 +21,22 @@ git-clone this repository and import the cache class into your project.
 git clone https://github.com/llorrac1/python-ttl-cache.git
 ```
 
+Importing with either
 ```python # Path: README.md
-from cache import ttl_cache
+from ttl_cache.cache import ttl_cache
 ```
+or 
+```python # Path: README.md
+from ttl_cache import TTLCache
+```
+
+Using ```ttl_cache.cache import ttl_cache``` will allow you to use ttl_cache as a decorator with no additional setup.
 
 
 ## Usage
 
 ```python # Path: README.md
-from cache import ttl_cache
+from ttl_cache.cache import ttl_cache
 
 mycache = ttl_cache(maxsize=5, ttl=10)
 
